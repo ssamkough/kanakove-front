@@ -4,9 +4,10 @@ A website to help people learn the Japanese Kana (hiragana, katakana).
 
 ## Technologies 🎇
 
-- [React](https://reactjs.org/)
-- [Typescript](https://www.typescriptlang.org/index.html)
+-   [React](https://reactjs.org/)
+-   [Typescript](https://www.typescriptlang.org/index.html)
 
 ## Resources 📎
 
-- N/A
+-   [Dr Lingua](https://drlingua.com/japanese/games/kana-bento/)
+-   [Real Kana](https://realkana.com/)
