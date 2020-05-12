@@ -6,6 +6,7 @@ A website to help people learn the Japanese Kana (hiragana, katakana).
 
 -   [React](https://reactjs.org/)
 -   [Typescript](https://www.typescriptlang.org/index.html)
+-   [Ant Design](http://ant.design/)
 
 ## Resources 📎
 
