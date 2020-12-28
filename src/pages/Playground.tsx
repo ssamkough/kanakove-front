@@ -2,71 +2,61 @@ import React, { useState, useEffect } from 'react';
 import { Row, Col, Input } from 'antd';
 
 import Kana from './../components/Kana';
-
-const options: string[] = [
-    'Hiragana',
-    'Katakana',
-    'Hiragana Dakuten',
-    'Katakana Dakuten',
-    'Hiragana Combo',
-    'Katakana Combo',
-];
-
-const hiragana = ['あ', 'い', 'う', 'え', 'お'];
-const katakana = ['ア', 'イ', 'ウ', 'エ', 'オ'];
-const hiraganaDakuten = ['が'];
-const katakanaDakuten = ['ガ'];
-const hiraganaCombo = ['きゃ'];
-const katakanaCombo = ['ウァ'];
-
-const listOfSets = [hiragana, katakana, hiraganaDakuten, katakanaDakuten, hiraganaCombo, katakanaCombo];
-
-// あ	か
-// カ	さサ	たタ	なナ	はハ	まマ	やヤ	らラ	わワ
-// i	いイ	きキ	しシ	ちチ	にニ	ひヒ	みミ		りリ	ゐヰ
-// u	うウ	くク	すス	つツ	ぬヌ	ふフ	むム	ゆユ	るル
-// e	えエ	けケ	せセ	てテ	ねネ	へヘ	めメ		れレ	ゑヱ
-// o	おオ	こコ	そソ	とト	のノ	ほホ	もモ	よヨ	ろロ	をヲ
+import kanaMap from './../data/KanaMap';
 
 const Playground = (state: any) => {
     const [character, setCharacter] = useState('');
     const [characterList, setCharacterList] = useState([] as any);
+    const [romajiInput, setRomajiInput] = useState('');
 
-    const characterSets = state.location.state;
     useEffect(() => {
-        for (let i = 0; i < characterSets.length; i++) {
-            if (characterSets.includes(options[i])) {
-                setCharacterList([...characterList, listOfSets[0]]);
-                console.log(i);
+        const kanaList = state.location.state.checkedList;
+        let charList = [];
+
+        for (let i = 0; i < kanaList.length; i++) {
+            let kanaSet = kanaMap.get(kanaList[i]) as string[] | undefined;
+            if (kanaSet) {
+                for (let j = 0; j < kanaSet.length; j++) {
+                    let char = kanaSet[j];
+                    charList.push(char);
+                }
+            } else {
+                console.log('kana set is undefined');
             }
         }
 
-        return () => {
-            const randomCharacter: string = characterList[Math.floor(Math.random() * characterList.length)];
-            setCharacter(randomCharacter);
-        };
-    }, [characterSets, setCharacterList]);
+        console.log(charList);
+        setCharacterList(charList);
+        setCharacter(charList[0][0]);
+    }, []);
+
+    const onChange = (e: any) => {
+        console.log(e.target.value);
+        setRomajiInput(e.target.value);
+    };
+
+    const onPressEnter = (e: any) => {
+        console.log(e);
+        console.log(romajiInput);
+    };
 
     return (
         <Row>
             <Col>
                 <Row>
-                    <Col>
+                    <Col span={24}>
                         <Kana character={character}></Kana>
-                        <span>
-                            <span>list: </span>
-                            {characterList}
-                        </span>
-                        <br />
-                        <span>
-                            <span>character: </span>
-                            {character}
-                        </span>
                     </Col>
                 </Row>
                 <Row>
                     <Col>
-                        <Input placeholder="romaji" size="large" className="playground-input" />
+                        <Input
+                            placeholder="romaji"
+                            size="large"
+                            onChange={(e) => onChange(e)}
+                            onPressEnter={(e) => onPressEnter(e)}
+                            className="playground-input"
+                        />
                     </Col>
                 </Row>
             </Col>

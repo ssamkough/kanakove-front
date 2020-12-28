@@ -2,8 +2,8 @@ import React from 'react';
 
 const Kana = ({ character }: { character: string }) => {
     return (
-        <div>
-            <p>japanese character</p>
+        <div style={{ textAlign: 'center' }}>
+            <h1>{character}</h1>
         </div>
     );
 };

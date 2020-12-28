@@ -12,8 +12,10 @@ const App = () => {
             <Row id="app" align="middle" justify="center">
                 <Col>
                     <Row className="title-row">
-                        <Col>
-                            <Title level={2}>KanaKove</Title>
+                        <Col span={24}>
+                            <Title level={1} style={{ textAlign: 'center' }}>
+                                KanaKove
+                            </Title>
                         </Col>
                     </Row>
                     <br />

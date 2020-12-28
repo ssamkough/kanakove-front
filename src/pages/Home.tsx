@@ -49,7 +49,7 @@ const Home = () => {
                     ></Checkbox.Group>
                     <br />
                     <br />
-                    <Link to={{ pathname: '/playground', state: checkedList }}>
+                    <Link to={{ pathname: '/playground', state: { checkedList } }}>
                         <Button onClick={onSubmit}>Start</Button>
                     </Link>
                 </Col>
