@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Row, Col, Checkbox, Button } from 'antd';
+import { Button, Checkbox, Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
 
 const checkboxOptions: string[] = [
@@ -31,9 +31,9 @@ const Home = () => {
     const onSubmit = () => {};
 
     return (
-        <div>
+        <div className="checkbox-container">
             <Row>
-                <Col>
+                <Col span={24}>
                     <Checkbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
                         Check all
                     </Checkbox>
@@ -41,17 +41,43 @@ const Home = () => {
             </Row>
             <Row>
                 <Col>
-                    <Checkbox.Group
-                        options={checkboxOptions}
-                        value={checkedList}
-                        onChange={onChange}
-                        className="checkbox-group"
-                    ></Checkbox.Group>
+                    <Checkbox.Group value={checkedList} onChange={onChange} className="checkbox-group">
+                        <Row>
+                            <Col span={12}>
+                                <Checkbox value="Hiragana">Hiragana</Checkbox>
+                            </Col>
+                            <Col span={12}>
+                                <Checkbox value="Katakana">Katakana</Checkbox>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col span={12}>
+                                <Checkbox value="Hiragana Dakuten">Katakana Dakuten</Checkbox>
+                            </Col>
+                            <Col span={12}>
+                                <Checkbox value="Katakana Dakuten">Katakana Dakuten</Checkbox>
+                            </Col>
+                        </Row>
+                        <Row>
+                            <Col span={12}>
+                                <Checkbox value="Hiragana Combo">Hiragana Combo</Checkbox>
+                            </Col>
+                            <Col span={12}>
+                                <Checkbox value="Katakana Combo">Katakana Combo</Checkbox>
+                            </Col>
+                        </Row>
+                    </Checkbox.Group>
                     <br />
                     <br />
-                    <Link to={{ pathname: '/playground', state: { checkedList } }}>
-                        <Button onClick={onSubmit}>Start</Button>
-                    </Link>
+                    <Row>
+                        <Col span={24} style={{ textAlign: 'center' }}>
+                            <Link to={{ pathname: '/playground', state: { checkedList } }}>
+                                <Button size="large" onClick={onSubmit}>
+                                    Start
+                                </Button>
+                            </Link>
+                        </Col>
+                    </Row>
                 </Col>
             </Row>
         </div>

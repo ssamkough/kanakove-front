@@ -20,6 +20,10 @@ body {
     height: 75vh;
 }
 
+.checkbox-container label {
+    font-size: large;
+}
+
 .checkbox-group label {
     display: block;
     height: 30px;

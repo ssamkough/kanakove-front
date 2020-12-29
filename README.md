@@ -1,6 +1,9 @@
 # KanaKove 🏯
 
-A website to help people learn the Japanese Kana (hiragana, katakana).
+[![Website kanakove.com](https://img.shields.io/website-up-down-green-red/http/shields.io.svg)](https://kanakove.com/)<br/>
+[kanakove.com](https://kanakove.com/)
+
+A _cove_ to help people learn the Japanese Kana (hiragana, katakana).
 
 ## Technologies 🎇
 
