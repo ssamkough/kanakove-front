@@ -10,25 +10,29 @@ const Playground = (state: any) => {
     const [romajiInput, setRomajiInput] = useState('');
 
     useEffect(() => {
-        const kanaList = state.location.state.checkedList;
-        let charList = [];
+        const insertCharacterList = () => {
+            const kanaList = state.location.state.checkedList;
+            let charList = [];
 
-        for (let i = 0; i < kanaList.length; i++) {
-            let kanaSet = kanaMap.get(kanaList[i]) as string[] | undefined;
-            if (kanaSet) {
-                for (let j = 0; j < kanaSet.length; j++) {
-                    let char = kanaSet[j];
-                    charList.push(char);
+            for (let i = 0; i < kanaList.length; i++) {
+                let kanaSet = kanaMap.get(kanaList[i]) as string[] | undefined;
+                if (kanaSet) {
+                    for (let j = 0; j < kanaSet.length; j++) {
+                        let char = kanaSet[j];
+                        charList.push(char);
+                    }
+                } else {
+                    console.log('kana set is undefined');
                 }
-            } else {
-                console.log('kana set is undefined');
             }
-        }
 
-        console.log(charList);
-        setCharacterList(charList);
-        setCharacter(charList[0][0]);
-    }, []);
+            console.log(charList);
+            setCharacterList(charList);
+            setCharacter(charList[0][0]);
+        };
+
+        insertCharacterList();
+    }, []); // eslint-disable-line react-hooks/exhaustive-deps
 
     const onChange = (e: any) => {
         console.log(e.target.value);
@@ -38,6 +42,7 @@ const Playground = (state: any) => {
     const onPressEnter = (e: any) => {
         console.log(e);
         console.log(romajiInput);
+        console.log(characterList);
     };
 
     return (
