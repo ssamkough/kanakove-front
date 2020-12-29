@@ -16,6 +16,14 @@ body {
     height: 100vh;
 }
 
+.home-header {
+    color: #db8282 !important;
+}
+
+.home-header:hover {
+    color: #dfa6a6 !important;
+}
+
 .content-row {
     height: 75vh;
 }

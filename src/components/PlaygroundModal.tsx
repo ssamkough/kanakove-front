@@ -11,7 +11,7 @@ const PlaygroundModal = ({
     visible: boolean;
     setVisible: any;
     kanaSets: any[];
-    score: number;
+    score: string;
 }) => {
     const history = useHistory();
 
@@ -35,15 +35,13 @@ const PlaygroundModal = ({
             cancelText="Back to Home"
         >
             <p>You passed the kana quiz for the sets:</p>
+            <ul style={{ listStyleType: 'none' }}>
+                {kanaSets.map((kSet, i) => {
+                    return <li key={i}>{kSet}</li>;
+                })}
+            </ul>
             <p>
-                <ul style={{ listStyleType: 'none' }}>
-                    {kanaSets.map((kSet, i) => {
-                        return <li key={i}>{kSet}</li>;
-                    })}
-                </ul>
-            </p>
-            <p>
-                Your scored <b>{score}</b>!
+                You scored <b>{score}</b>!
             </p>
         </Modal>
     );

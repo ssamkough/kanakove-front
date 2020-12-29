@@ -18,10 +18,14 @@ A _cove_ to help people learn the Japanese Kana (hiragana, katakana). This is th
 -   [Real Kana](https://realkana.com/)
 -   [Tofugu's Learn Hiragana Quiz](https://kana-quiz.tofugu.com/)
 
-#### Stackoverflow
+### Stackoverflow
 
 -   [Programmatically navigate using react router](https://stackoverflow.com/a/42121109)
 -   [How do I reload a page with react-router?](https://stackoverflow.com/a/61123116)
+
+### Other
+
+-   [Build a React Timer Component Using Hooks](https://upmostly.com/tutorials/build-a-react-timer-component-using-hooks)
 
 ## Todo ✔️
 

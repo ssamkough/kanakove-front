@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { Row, Col, Typography } from 'antd';
 
 import Home from './pages/Home';
@@ -14,7 +14,9 @@ const App = () => {
                     <Row className="title-row">
                         <Col span={24}>
                             <Title level={1} style={{ textAlign: 'center' }}>
-                                KanaKove ツ
+                                <Link to={'/'} className="home-header">
+                                    KanaKove ツ
+                                </Link>
                             </Title>
                         </Col>
                     </Row>

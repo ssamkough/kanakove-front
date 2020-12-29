@@ -6,12 +6,15 @@ import Kana from './../components/Kana';
 import PlaygroundModal from './../components/PlaygroundModal';
 
 const Playground = (state: any) => {
-    const [score, setScore] = useState(0);
     const [character, setCharacter] = useState('');
     const [kanaSets, setKanaSets] = useState([]);
     const [characterList, setCharacterList] = useState([] as any);
     const [romajiInput, setRomajiInput] = useState('');
     const [modalVisibility, setModalVisibility] = useState(false);
+    const [seconds, setSeconds] = useState(0);
+    const [points, setPoints] = useState(0);
+    const [score, setScore] = useState('');
+    const [isActive, setIsActive] = useState(false);
 
     useEffect(() => {
         const insertCharacterList = () => {
@@ -36,7 +39,20 @@ const Playground = (state: any) => {
         };
 
         insertCharacterList();
+        toggleStopwatch();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
+
+    useEffect(() => {
+        let interval: any = null;
+        if (isActive) {
+            interval = setInterval(() => {
+                setSeconds((seconds) => seconds + 1);
+            }, 1000);
+        } else if (!isActive && seconds !== 0) {
+            clearInterval(interval);
+        }
+        return () => clearInterval(interval);
+    }, [isActive, seconds]);
 
     const removeFirstCharacterFromList = () => {
         if (characterList.length === 0) {
@@ -48,13 +64,27 @@ const Playground = (state: any) => {
         setCharacterList(tempCharList);
     };
 
-    const appendScore = () => {
-        let newScore = score + 100;
-        setScore(newScore);
+    const toggleStopwatch = () => {
+        setIsActive(!isActive);
     };
 
-    const decreaseScore = () => {
-        let newScore = score - 50;
+    const resetStopwatch = () => {
+        setSeconds(0);
+        setIsActive(false);
+    };
+
+    const appendPoints = () => {
+        let newPoints = points + 100;
+        setPoints(newPoints);
+    };
+
+    const decreasePoints = () => {
+        let newPoints = points - 50;
+        setPoints(newPoints);
+    };
+
+    const createScore = () => {
+        const newScore = (points / seconds).toFixed(2);
         setScore(newScore);
     };
 
@@ -65,14 +95,16 @@ const Playground = (state: any) => {
     const onPressEnter = () => {
         if (romajiInput === character[1]) {
             removeFirstCharacterFromList();
-            appendScore();
+            appendPoints();
             if (characterList.length === 0) {
+                resetStopwatch();
+                createScore();
                 setModalVisibility(true);
                 return;
             }
             setCharacter(characterList[0]);
         } else {
-            decreaseScore();
+            decreasePoints();
         }
 
         setRomajiInput('');
@@ -98,9 +130,12 @@ const Playground = (state: any) => {
                         />
                     </Col>
                 </Row>
-                <Row>
-                    <Col span={24} style={{ textAlign: 'center' }}>
-                        <h2>Score: {score}</h2>
+                <Row style={{ textAlign: 'center' }}>
+                    <Col span={12}>
+                        <h3>Points: {points}</h3>
+                    </Col>
+                    <Col span={12}>
+                        <h3>Time: {seconds}s</h3>
                     </Col>
                 </Row>
             </Col>
