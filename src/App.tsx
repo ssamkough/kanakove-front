@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { Row, Col, Typography, Image } from 'antd';
+import { Row, Col, Typography } from 'antd';
 
 import Home from './pages/Home';
 import Playground from './pages/Playground';
