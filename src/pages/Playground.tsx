@@ -46,7 +46,7 @@ const Playground = (state: any) => {
     };
 
     return (
-        <Row>
+        <Row align="middle" justify="center">
             <Col>
                 <Row>
                     <Col span={24}>

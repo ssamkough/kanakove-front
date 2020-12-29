@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 
 const checkboxOptions: string[] = [
     'Hiragana',
-    'Katakana',
     'Hiragana Dakuten',
-    'Katakana Dakuten',
     'Hiragana Combo',
+    'Katakana',
+    'Katakana Dakuten',
     'Katakana Combo',
 ];
 
@@ -28,53 +28,49 @@ const Home = () => {
         setCheckAll(e.target.checked);
     };
 
-    const onSubmit = () => {};
+    const checkBoxItems: any[] = [];
+    for (let i = 0; i < checkboxOptions.length; i += 3) {
+        const checkBoxItem = (
+            <Row align="middle" justify="center" gutter={[16, 16]}>
+                <Col>
+                    <Checkbox value={checkboxOptions[i]}>{checkboxOptions[i]}</Checkbox>
+                </Col>
+                <Col>
+                    <Checkbox value={checkboxOptions[i + 1]}>{checkboxOptions[i + 1]}</Checkbox>
+                </Col>
+                <Col>
+                    <Checkbox value={checkboxOptions[i + 2]}>{checkboxOptions[i + 2]}</Checkbox>
+                </Col>
+            </Row>
+        );
+        checkBoxItems.push(checkBoxItem);
+    }
+    console.log(checkBoxItems);
 
     return (
         <div className="checkbox-container">
-            <Row>
-                <Col span={24}>
+            <Row align="middle" justify="center" gutter={[16, 16]}>
+                <Col>
                     <Checkbox indeterminate={indeterminate} onChange={onCheckAllChange} checked={checkAll}>
                         Check all
                     </Checkbox>
                 </Col>
             </Row>
-            <Row>
-                <Col>
-                    <Checkbox.Group value={checkedList} onChange={onChange} className="checkbox-group">
-                        <Row>
-                            <Col span={12}>
-                                <Checkbox value="Hiragana">Hiragana</Checkbox>
-                            </Col>
-                            <Col span={12}>
-                                <Checkbox value="Katakana">Katakana</Checkbox>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col span={12}>
-                                <Checkbox value="Hiragana Dakuten">Katakana Dakuten</Checkbox>
-                            </Col>
-                            <Col span={12}>
-                                <Checkbox value="Katakana Dakuten">Katakana Dakuten</Checkbox>
-                            </Col>
-                        </Row>
-                        <Row>
-                            <Col span={12}>
-                                <Checkbox value="Hiragana Combo">Hiragana Combo</Checkbox>
-                            </Col>
-                            <Col span={12}>
-                                <Checkbox value="Katakana Combo">Katakana Combo</Checkbox>
-                            </Col>
-                        </Row>
-                    </Checkbox.Group>
+            <Row align="middle" justify="center">
+                <Col span={24}>
+                    <Row align="middle" justify="center">
+                        <Col span={24}>
+                            <Checkbox.Group value={checkedList} onChange={onChange} className="checkbox-group">
+                                {checkBoxItems}
+                            </Checkbox.Group>
+                        </Col>
+                    </Row>
                     <br />
                     <br />
                     <Row>
                         <Col span={24} style={{ textAlign: 'center' }}>
                             <Link to={{ pathname: '/playground', state: { checkedList } }}>
-                                <Button size="large" onClick={onSubmit}>
-                                    Start
-                                </Button>
+                                <Button size="large">Start</Button>
                             </Link>
                         </Col>
                     </Row>

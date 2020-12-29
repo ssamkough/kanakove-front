@@ -10,7 +10,7 @@ const App = () => {
     return (
         <Router>
             <Row id="app" align="middle" justify="center">
-                <Col>
+                <Col span={12}>
                     <Row className="title-row">
                         <Col span={24}>
                             <Title level={1} style={{ textAlign: 'center' }}>
@@ -20,7 +20,7 @@ const App = () => {
                     </Row>
                     <br />
                     <Row className="content-row">
-                        <Col>
+                        <Col span={24}>
                             <Switch>
                                 <Route exact path="/" component={Home}></Route>
                                 <Route path="/playground" component={Playground}></Route>

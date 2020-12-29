@@ -24,8 +24,11 @@ body {
     font-size: large;
 }
 
-.checkbox-group label {
+.checkbox-group {
     display: block;
+}
+
+.checkbox-group label {
     height: 30px;
     line-height: 30px;
 }
