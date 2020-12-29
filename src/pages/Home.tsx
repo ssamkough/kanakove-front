@@ -31,7 +31,7 @@ const Home = () => {
     const checkBoxItems: any[] = [];
     for (let i = 0; i < checkboxOptions.length; i += 3) {
         const checkBoxItem = (
-            <Row align="middle" justify="center" gutter={[16, 16]}>
+            <Row key={i} align="middle" justify="center" gutter={[16, 16]}>
                 <Col>
                     <Checkbox value={checkboxOptions[i]}>{checkboxOptions[i]}</Checkbox>
                 </Col>
@@ -45,7 +45,6 @@ const Home = () => {
         );
         checkBoxItems.push(checkBoxItem);
     }
-    console.log(checkBoxItems);
 
     return (
         <div className="checkbox-container">

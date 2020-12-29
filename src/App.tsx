@@ -14,7 +14,7 @@ const App = () => {
                     <Row className="title-row">
                         <Col span={24}>
                             <Title level={1} style={{ textAlign: 'center' }}>
-                                KanaKove
+                                KanaKove ツ
                             </Title>
                         </Col>
                     </Row>
