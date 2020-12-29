@@ -29,7 +29,7 @@ A _cove_ to help people learn the Japanese Kana (hiragana, katakana). This is th
 
 ## Todo ✔️
 
--   add timer (add it into score)
+-   optimize mobile
 -   have randomize character list button
 -   add kanjis from genki
 -   once tested with JSG, post on reddit for others

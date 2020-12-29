@@ -1,12 +1,13 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { Row, Col, Typography } from 'antd';
+import { Row, Col, Typography, Image } from 'antd';
 
 import Home from './pages/Home';
 import Playground from './pages/Playground';
 
 const App = () => {
     const { Title } = Typography;
+
     return (
         <Router>
             <Row id="app" align="middle" justify="center">
@@ -27,6 +28,19 @@ const App = () => {
                                 <Route exact path="/" component={Home}></Route>
                                 <Route path="/playground" component={Playground}></Route>
                             </Switch>
+                        </Col>
+                    </Row>
+                    <Row>
+                        <Col span={12}>
+                            Made by{' '}
+                            <a target="_blank" rel="noopener noreferrer" href="http://sammysamkough.com/">
+                                Sammy Samkough
+                            </a>
+                        </Col>
+                        <Col span={12} style={{ textAlign: 'right' }}>
+                            <a target="_blank" rel="noopener noreferrer" href="https://www.buymeacoffee.com/ssamkough">
+                                <img alt="buy-me-a-coffee" width={200} src="./buy-me-a-coffee.png" />
+                            </a>
                         </Col>
                     </Row>
                 </Col>
