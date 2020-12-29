@@ -13,8 +13,6 @@ const Playground = (state: any) => {
     const [romajiInput, setRomajiInput] = useState('');
     const [modalVisibility, setModalVisibility] = useState(false);
 
-    let originalCharacterList = [];
-
     useEffect(() => {
         const insertCharacterList = () => {
             let kanaList = state.location.state.checkedList;
@@ -33,7 +31,6 @@ const Playground = (state: any) => {
                 }
             }
 
-            originalCharacterList = charList;
             setCharacterList(charList);
             setCharacter(charList[0]);
         };

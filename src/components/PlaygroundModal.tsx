@@ -25,19 +25,6 @@ const PlaygroundModal = ({
         history.push('/');
     };
 
-    const kanaSetString = () => {
-        let kanaString = '';
-        for (let i = 0; i < kanaSets.length; i++) {
-            if (i === kanaSets.length - 1) {
-                kanaString += ' and ' + kanaSets[i];
-                return;
-            }
-            kanaString += ', ' + kanaSets[i];
-        }
-        console.log('KANA STRING:', kanaString);
-        return kanaString;
-    };
-
     return (
         <Modal
             title="Success"
