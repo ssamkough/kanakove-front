@@ -28,6 +28,7 @@ A _cove_ to help people learn the Japanese Kana (hiragana, katakana). This is th
 -   add timer (add it into score)
 -   have randomize character list button
 -   add kanjis from genki
+-   once tested with JSG, post on reddit for others
 
 ### backend
 

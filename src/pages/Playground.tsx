@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Input } from 'antd';
 
-import kanaMap from './../data/KanaMap';
+import KanaMap from './../data/KanaMap';
 import Kana from './../components/Kana';
 import PlaygroundModal from './../components/PlaygroundModal';
 
@@ -20,7 +20,7 @@ const Playground = (state: any) => {
             let charList = [];
 
             for (let i = 0; i < kanaList.length; i++) {
-                let kanaSet = kanaMap.get(kanaList[i]) as string[] | undefined;
+                let kanaSet = KanaMap.get(kanaList[i]) as string[] | undefined;
                 if (kanaSet) {
                     for (let j = 0; j < kanaSet.length; j++) {
                         let char = kanaSet[j];
@@ -53,6 +53,11 @@ const Playground = (state: any) => {
         setScore(newScore);
     };
 
+    const decreaseScore = () => {
+        let newScore = score - 50;
+        setScore(newScore);
+    };
+
     const onChange = (e: any) => {
         setRomajiInput(e.target.value);
     };
@@ -67,7 +72,7 @@ const Playground = (state: any) => {
             }
             setCharacter(characterList[0]);
         } else {
-            console.log('incorrect');
+            decreaseScore();
         }
 
         setRomajiInput('');
