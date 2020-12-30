@@ -22,6 +22,7 @@ A _cove_ to help people learn the Japanese Kana (hiragana, katakana). This is th
 
 -   [Programmatically navigate using react router](https://stackoverflow.com/a/42121109)
 -   [How do I reload a page with react-router?](https://stackoverflow.com/a/61123116)
+-   [Fixing 404 Errors w/ React SPA on Netlify](https://stackoverflow.com/questions/58065603/netlify-renders-404-on-page-refresh-using-react-and-react-router)
 
 ### Other
 
@@ -29,6 +30,8 @@ A _cove_ to help people learn the Japanese Kana (hiragana, katakana). This is th
 
 ## Todo ✔️
 
+-   show red outline if incorrect answer
+-   enable multiple options for じ, づ (and katakana versions)
 -   optimize mobile
 -   have randomize character list button
 -   add kanjis from genki
