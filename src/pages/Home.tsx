@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Button, Checkbox, Col, Row } from 'antd';
 import { Link } from 'react-router-dom';
-import ReactGA from 'react-ga';
 
 const checkboxOptions: string[] = [
     'Hiragana',
@@ -16,11 +15,6 @@ const Home = () => {
     const [checkedList, setCheckedList] = useState([] as any);
     const [indeterminate, setIndeterminate] = useState(false);
     const [checkAll, setCheckAll] = useState(false);
-
-    useEffect(() => {
-        ReactGA.initialize('G-ECNW9FPPSL');
-        ReactGA.pageview(window.location.pathname + window.location.search);
-    }, []);
 
     const onChange = (checkedList: any) => {
         setCheckedList(checkedList);
