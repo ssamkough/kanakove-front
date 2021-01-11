@@ -23,6 +23,8 @@ A _cove_ to help people learn the Japanese Kana (hiragana, katakana). This is th
 -   [Programmatically navigate using react router](https://stackoverflow.com/a/42121109)
 -   [How do I reload a page with react-router?](https://stackoverflow.com/a/61123116)
 -   [Fixing 404 Errors w/ React SPA on Netlify](https://stackoverflow.com/questions/58065603/netlify-renders-404-on-page-refresh-using-react-and-react-router)
+-   [Adding Google Analytics to React](https://stackoverflow.com/a/49279887)
+-   [How to add google analytics to your reactjs app?](https://www.faisaljebali.com/how-to-add-google-analytics-to-your-reactjs-app/)
 
 ### Other
 

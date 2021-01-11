@@ -30,7 +30,8 @@ const PlaygroundStats = ({
             clearInterval(interval);
         }
         return () => clearInterval(interval);
-    }, [isActive, seconds]); // eslint-disable-next-line
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [isActive, seconds]);
 
     return (
         <Row style={{ textAlign: 'center' }}>
