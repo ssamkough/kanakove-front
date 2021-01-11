@@ -1,48 +1,24 @@
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
-import { Row, Col, Typography } from 'antd';
+import { BrowserRouter as Router } from 'react-router-dom';
+import { Row, Col } from 'antd';
 
-import Home from './pages/Home';
-import Playground from './pages/Playground';
+import Header from './components/Header';
+import Routes from './Routes';
+import Footer from './components/Footer';
 
 const App = () => {
-    const { Title } = Typography;
-
     return (
         <Router>
             <Row id="app" align="middle" justify="center">
                 <Col span={12}>
-                    <Row className="title-row">
-                        <Col span={24}>
-                            <Title level={1} style={{ textAlign: 'center' }}>
-                                <Link to={'/'} className="home-header">
-                                    KanaKove ツ
-                                </Link>
-                            </Title>
-                        </Col>
-                    </Row>
+                    <Header />
                     <br />
                     <Row className="content-row">
                         <Col span={24}>
-                            <Switch>
-                                <Route exact path="/" component={Home}></Route>
-                                <Route path="/playground" component={Playground}></Route>
-                            </Switch>
+                            <Routes />
                         </Col>
                     </Row>
-                    <Row>
-                        <Col span={12}>
-                            Made by{' '}
-                            <a target="_blank" rel="noopener noreferrer" href="http://sammysamkough.com/">
-                                Sammy Samkough
-                            </a>
-                        </Col>
-                        <Col span={12} style={{ textAlign: 'right' }}>
-                            <a target="_blank" rel="noopener noreferrer" href="https://www.buymeacoffee.com/ssamkough">
-                                <img alt="buy-me-a-coffee" width={200} src="./buy-me-a-coffee.png" />
-                            </a>
-                        </Col>
-                    </Row>
+                    <Footer />
                 </Col>
             </Row>
         </Router>

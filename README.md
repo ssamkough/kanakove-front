@@ -27,16 +27,17 @@ A _cove_ to help people learn the Japanese Kana (hiragana, katakana). This is th
 ### Other
 
 -   [Build a React Timer Component Using Hooks](https://upmostly.com/tutorials/build-a-react-timer-component-using-hooks)
+-   [How to shuffle elements in a JavaScript array](https://flaviocopes.com/how-to-shuffle-array-javascript/)
 
 ## Todo ✔️
 
--   show red outline if incorrect answer
+-   modularize code (especially Playground.tsx)
 -   enable multiple options for じ, づ (and katakana versions)
+-   share button to share your scores and post them on social media
+    -   twitter: https://developer.twitter.com/en/docs/twitter-for-websites/tweet-button/overview
+-   implement high score with a high score page
+-   create sign in/register func
+-   create a help page (resources for learning the kana, maybe even a brief explanation of them and using SRS)
 -   optimize mobile
--   have randomize character list button
 -   add kanjis from genki
 -   once tested with JSG, post on reddit for others
-
-### backend
-
--   implement high score with a high score page

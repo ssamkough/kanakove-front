@@ -4,6 +4,7 @@ import { Row, Col, Input } from 'antd';
 import KanaMap from './../data/KanaMap';
 import Kana from './../components/Kana';
 import PlaygroundModal from './../components/PlaygroundModal';
+import PlaygroundStats from './../components/PlaygroundStats';
 
 const Playground = (state: any) => {
     const [character, setCharacter] = useState('');
@@ -11,8 +12,8 @@ const Playground = (state: any) => {
     const [characterList, setCharacterList] = useState([] as any);
     const [romajiInput, setRomajiInput] = useState('');
     const [modalVisibility, setModalVisibility] = useState(false);
-    const [seconds, setSeconds] = useState(0);
     const [points, setPoints] = useState(0);
+    const [seconds, setSeconds] = useState(0);
     const [score, setScore] = useState('');
     const [isActive, setIsActive] = useState(false);
 
@@ -34,6 +35,7 @@ const Playground = (state: any) => {
                 }
             }
 
+            charList = charList.sort(() => Math.random() - 0.5);
             setCharacterList(charList);
             setCharacter(charList[0]);
         };
@@ -41,28 +43,6 @@ const Playground = (state: any) => {
         insertCharacterList();
         toggleStopwatch();
     }, []); // eslint-disable-line react-hooks/exhaustive-deps
-
-    useEffect(() => {
-        let interval: any = null;
-        if (isActive) {
-            interval = setInterval(() => {
-                setSeconds((seconds) => seconds + 1);
-            }, 1000);
-        } else if (!isActive && seconds !== 0) {
-            clearInterval(interval);
-        }
-        return () => clearInterval(interval);
-    }, [isActive, seconds]);
-
-    const removeFirstCharacterFromList = () => {
-        if (characterList.length === 0) {
-            return;
-        }
-
-        const tempCharList = characterList;
-        tempCharList.shift();
-        setCharacterList(tempCharList);
-    };
 
     const toggleStopwatch = () => {
         setIsActive(!isActive);
@@ -88,26 +68,53 @@ const Playground = (state: any) => {
         setScore(newScore);
     };
 
+    const removeFirstCharacterFromList = () => {
+        if (characterList.length === 0) {
+            return;
+        }
+
+        const tempCharList = characterList;
+        tempCharList.shift();
+        setCharacterList(tempCharList);
+    };
+
     const onChange = (e: any) => {
         setRomajiInput(e.target.value);
     };
 
-    const onPressEnter = () => {
-        if (romajiInput === character[1]) {
-            removeFirstCharacterFromList();
-            appendPoints();
-            if (characterList.length === 0) {
-                resetStopwatch();
-                createScore();
-                setModalVisibility(true);
-                return;
-            }
-            setCharacter(characterList[0]);
-        } else {
-            decreasePoints();
+    const correctAnswer = (element: any) => {
+        removeFirstCharacterFromList();
+        appendPoints();
+        if (characterList.length === 0) {
+            resetStopwatch();
+            createScore();
+            setModalVisibility(true);
+            return;
+        }
+        setCharacter(characterList[0]);
+        element.style.borderColor = null;
+        element.style.boxShadow = null;
+    };
+
+    const wrongAnswer = (element: any) => {
+        decreasePoints();
+        element.style.borderColor = '#ff4d4f';
+        element.style.boxShadow = '0px 0px 0px 0px #ff4d4f';
+    };
+
+    const onPressEnter = (e: any) => {
+        // return if nothing typed
+        if (romajiInput === '') {
+            return;
         }
 
-        setRomajiInput('');
+        const elem = e.target;
+        if (romajiInput === character[1]) {
+            correctAnswer(elem);
+            setRomajiInput('');
+        } else {
+            wrongAnswer(elem);
+        }
     };
 
     return (
@@ -125,19 +132,21 @@ const Playground = (state: any) => {
                             size="large"
                             value={romajiInput}
                             onChange={(e) => onChange(e)}
-                            onPressEnter={() => onPressEnter()}
+                            onPressEnter={(e) => onPressEnter(e)}
                             className="playground-input"
                         />
                     </Col>
                 </Row>
-                <Row style={{ textAlign: 'center' }}>
-                    <Col span={12}>
-                        <h3>Points: {points}</h3>
-                    </Col>
-                    <Col span={12}>
-                        <h3>Time: {seconds}s</h3>
-                    </Col>
-                </Row>
+                <PlaygroundStats
+                    points={points}
+                    setPoints={setPoints}
+                    seconds={seconds}
+                    setSeconds={setSeconds}
+                    score={score}
+                    setScore={setScore}
+                    isActive={isActive}
+                    setIsActive={setIsActive}
+                />
             </Col>
             <PlaygroundModal
                 visible={modalVisibility}
