@@ -79,7 +79,8 @@ const Playground = (state: any) => {
     };
 
     const onChange = (e: any) => {
-        setRomajiInput(e.target.value);
+        const lowerCaseInput = e.target.value.toLowerCase();
+        setRomajiInput(lowerCaseInput);
     };
 
     const correctAnswer = (element: any) => {
